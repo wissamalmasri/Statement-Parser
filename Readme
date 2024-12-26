@@ -1,0 +1,92 @@
+Project Creator: Wissam Almasri - redID- 130183310
+class Information: CS 530 system programing, Spring 2024
+Project 3 Statment Parser 
+Filename: Readme 
+
+
+
+
+functionality: 
+the parser will read a file from the directory("scanme.txt), scan the input and determine if each statments is valid. the program will then output the statment and wether each statment is valid / invalid into a sepertate txt file ("parsed,txt") if the stament is invalid the program will output why the stament failed ans what was expecting instead.
+
+each statment is indepedndent from all other statments the program will continue evaluating statments until EOF.
+
+Statement specification:
+
+id:== identifier, exp:== expression, op:==operator, char:== character
+
+the program will reconize each of the following as valid statment:
+-assignment 
+-exprestion
+assignment shall have the form: id=exp;
+
+expression shall have the form: id op id {op id} -- any length as long as pairs of op and id are added 
+
+A parenthesis pair may be used to group any id op id combination. therefore: id op (id op id) op id AND id op id op (id op id) -- valid expressions 
+
+
+Note - each id, op, =, and ; will have a space as it's precedent and antecedent. The open parenthesis will have a space as it's precedent but it may or may not have a space immediately following it. The converse is true for the closing parenthesis (guaranteed a space as it's antecedent but not necessarily preceding it)
+
+an id shall be made up of any combination of digits and char. the first position of the identifier must contain a char 
+
+A digit is one of: 0,1,2,3,4,5,6,7,8,9,0
+
+A char is one of: a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z
+
+an OP is on of: +,-,*,/,%
+
+File Manifest
+
+prior to compiling 
+makefile
+parser.l (flex)
+parser.y (bison)
+Readme 
+scanme.txt
+
+After Compiling & executing 
+makefile
+parser.l
+parser.y
+Readme
+scanme.txt
+lex.yy.c
+parsed.txt
+parser(executable)
+parser.output (verbose output)
+parser.tab.c
+parser.tab.h
+
+
+Compiling and Executing 
+
+Compile Instructions:
+
+to compile this program utilizing the makefile, the user can just enter make in the command 
+line and the program will compile and execute the 'parser' executable. The executable will create the output 'parsed.txt' file.
+
+If they wanted to manually compile the program and create the 'parser' executable: 
+To compile bison file: 
+"bison -dv parser.y" 
+To compile flex file: 
+"flex parser.l" 
+To generate 'parser' executable: 
+"gcc -o parser lex.yy.c parser.tab.c -ly -ll" 
+
+
+Execution Instructions:
+
+To operate this program all the user has to do is simply type 'make'. The makefile will compile / generate / and execute the proper files.
+ From there, the user may open the 'parsed.txt' file to see the resulting output.
+The user must have the proper file already inside the directory, "scanme.txt", otherwise the program
+ will not be able to read any input nor output anything
+
+
+
+
+
+
+
+
+
+
